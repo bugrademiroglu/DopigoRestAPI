@@ -104,7 +104,7 @@ To run the code:
 
 ###### On terminal:
  ```bash
-cd BankAPI
+cd DopigoRestAPI
 pip install -r requirements.txt
 python manage.py runserver
 ```
