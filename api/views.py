@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
+from rest_framework.generics import GenericAPIView
 from .models import Customer
 from .models import Account
 from .models import TransactionHistory
@@ -12,6 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 from time import gmtime, strftime
 import json
 import random
+
+
 # That function handles with /getCustomerAll request
 # Getting all the customers from database and display them as a json
 def getCustomerAll(request):
