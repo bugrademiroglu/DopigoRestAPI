@@ -134,7 +134,7 @@ docker run --rm -i -t <Your tag name> (This path run the code on your local)
 ```
 If you want to map the port and acces on your local machine:
 ```bash
-docker run -rm -i -t -p 8080:5000 <Your tag name>(This path run the code on your local)
+docker run -rm -i -t -p 8080:5000 <Your tag name> (This path run the code on your local)
 ```
 # Test
 In order to test the project, type the following command on your terminal
