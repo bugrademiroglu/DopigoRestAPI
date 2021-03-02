@@ -109,7 +109,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-Alternately, to quickly try out this repo in the cloud, [You can access to project on heroku!](https://dopigorestchallenge.herokuapp.com/getCustomerAll)
+Alternately, to quickly try out this repo in the cloud, [You can access to project on heroku!](https://dopigorestchallenge.herokuapp.com/api/getCustomerAll)
 ###### On Docker compose: 
 Type the following command on your terminal
 ```bash
@@ -130,11 +130,11 @@ docker build --tag <Enter a tag name> .
 ```
 Then,
 ```bash
-docker run --rm -i -t <Your tag name> (This path run the code on your)
+docker run --rm -i -t <Your tag name> (This path run the code on your local)
 ```
 If you want to map the port and acces on your local machine:
 ```bash
-docker run -rm -i -t -p 8080:5000 <Your tag name>(This path run the code on your)
+docker run -rm -i -t -p 8080:5000 <Your tag name>(This path run the code on your local)
 ```
 # Test
 In order to test the project, type the following command on your terminal
