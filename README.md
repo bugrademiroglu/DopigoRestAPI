@@ -139,6 +139,5 @@ docker run -rm -i -t -p 8080:5000 <Your tag name>(This path run the code on your
 # Test
 In order to test the project, type the following command on your terminal
 ```bash
-npm test
-
+python manage.py test
 ```

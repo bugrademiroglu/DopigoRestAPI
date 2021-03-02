@@ -16,13 +16,13 @@ class TestClass(TestCase):
     def test_customer_get(self):
         test_User_CustomerID = Customer.objects.get(name="Test")
         customer = Customer.objects.get(id=test_User_CustomerID.id)
-        first_customer_url = f"/getCustomer/{customer.name}"
+        first_customer_url = f"/api/getCustomer/{customer.name}"
         self.assertEqual(first_customer_url,reverse('getCustomer', args=[str(customer.name)]))
     # Creating a function in order to the test /getCustomerAll route with GET method
     def test_customer_getCustomerAll(self):
         c = Client()
         response = c.get(
-            '/getCustomerAll/',
+            '/api/getCustomerAll/',
         )
         self.assertEqual(response.status_code, 200)
     # Creating a function in order to the test /addCustomer route with POST method
@@ -30,7 +30,7 @@ class TestClass(TestCase):
     def test_adding_new_Customer(self):
             c= Client()
             response = c.post(
-                f'/addCustomer/',
+                f'/api/addCustomer/',
                 {'name': "NewTestUser"},
                 content_type='application/json'
             )
@@ -46,7 +46,7 @@ class TestClass(TestCase):
             c= Client()
             updateCustomer = Customer.objects.get(name="Test")
             response = c.put(
-                f'/updateCustomer/{updateCustomer.id}',
+                f'/api/updateCustomer/{updateCustomer.id}',
                 {'name': "UpdatedNewTestUser"},
                 content_type='application/json'
             )
@@ -62,7 +62,7 @@ class TestClass(TestCase):
             c= Client()
             updateCustomer = Customer.objects.get(name="Test")
             response = c.delete(
-                f'/deleteCustomer/{updateCustomer.id}'
+                f'/api/deleteCustomer/{updateCustomer.id}'
             )
             res = response.content.decode("utf-8")
             data = json.loads(res)
@@ -73,14 +73,14 @@ class TestClass(TestCase):
     def test_account_getAccountAll(self):
         c = Client()
         response = c.get(
-            '/getAccountAll/',
+            '/api/getAccountAll/',
         )
         self.assertEqual(response.status_code, 200)
     # Creating a function in order to the test /getAccount/<id> route with GET method
     # That test function tests to displaying requested account with it's id as a json
     def test_account_getAccount(self):
         test_Account = Account.objects.get(id=1)
-        account_url = f"/getAccount/{test_Account.id}"
+        account_url = f"/api/getAccount/{test_Account.id}"
         self.assertEqual(account_url,reverse('getAccount', args=[str(test_Account.id)]))
     # Creating a function in order to the test /addAccount route with POST method
     # That test function tests to adding new account to a existing customer
@@ -90,7 +90,7 @@ class TestClass(TestCase):
         test_customer_id = test_User_CustomerID.id
         c = Client()
         response = c.post(
-            '/addAccount/',
+            '/api/addAccount/',
             {'amount': 9999999999,
              'customerID':test_customer_id
              },
@@ -111,7 +111,7 @@ class TestClass(TestCase):
         test_customer_id = test_User_CustomerID.id
         c = Client()
         response = c.patch(
-            f'/updateAccount/{test_customer_id}',
+            f'/api/updateAccount/{test_customer_id}',
             {'amount': 19999999999
              },
             content_type='application/json'
@@ -130,7 +130,7 @@ class TestClass(TestCase):
         test_customer_id = test_User_CustomerID.id
         c = Client()
         response = c.delete(
-            f'/deleteAccount/{test_customer_id}'
+            f'/api/deleteAccount/{test_customer_id}'
         )
         res = response.content.decode("utf-8")
         data = json.loads(res)
@@ -147,7 +147,7 @@ class TestClass(TestCase):
         Account.objects.create(amount=10000, customerID=test_to_user)
         c = Client()
         response = c.post(
-            '/transferAmounts/',
+            '/api/transferAmounts/',
             {'fromAccount': test_from_user.id,
              'toAccount':test_to_user.id,
              'amount':5000
@@ -166,7 +166,7 @@ class TestClass(TestCase):
         Account.objects.create(amount=20000, customerID=test_from_user)
         c = Client()
         response = c.post(
-            '/retrieveBalance/',
+            '/api/retrieveBalance/',
             {'accountID': test_from_user.id,
              'amount':5000
              },
@@ -181,7 +181,7 @@ class TestClass(TestCase):
     def test_transactionAll(self):
         c = Client()
         response = c.get(
-            '/getTransactionAll/',
+            '/api/getTransactionAll/',
         )
         self.assertEqual(response.status_code, 200)
     # Creating a function in order to the test /getTransaction<id> route with GET method
@@ -193,6 +193,6 @@ class TestClass(TestCase):
         toAccount = Account.objects.create(amount=999999, customerID=customerTo)
         transAction = TransactionHistory.objects.create(senderAccountID=fromAccount,receiverAccountID=toAccount,amount=1234,transactionType="Transfer amounts")
         test_Transaction = TransactionHistory.objects.get(id=1)
-        account_url = f"/getTransaction/{test_Transaction.id}"
+        account_url = f"/api/getTransaction/{test_Transaction.id}"
         self.assertEqual(account_url,reverse('getTransaction', args=[str(test_Transaction.id)]))
 
