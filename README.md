@@ -106,7 +106,7 @@ To run the code:
 
 Clone this repo
  ```bash
-git clone https://github.com/bugrademiroglu/https://github.com/bugrademiroglu/DopigoRestAPI.git
+git clone https://github.com/bugrademiroglu/DopigoRestAPI.git
 ```
 
  ```bash
