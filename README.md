@@ -103,6 +103,12 @@ For the database, Sqlite was used.
 To run the code:
 
 ###### On terminal:
+
+Clone this repo
+ ```bash
+git clone https://github.com/bugrademiroglu/https://github.com/bugrademiroglu/DopigoRestAPI.git
+```
+
  ```bash
 cd DopigoRestAPI
 pip install -r requirements.txt
